@@ -8,7 +8,7 @@ function Board(props) {
     const [showDropdown,setShowDropdown]=useState(false);
     return (
         <div className="board">
-            {/* <div className="board_cards"> */}
+           
                 <div className="board_top">
             <p className="board_top_title">{props.board?.title}</p>
             <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
