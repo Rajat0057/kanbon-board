@@ -30,16 +30,18 @@ function Board(props) {
                     key={item.id}
                     card={item}
                     removeCard={props.removeCard}
-                    boardId={props.board?.id}
+                    boardId={props.board.id}
+                    handleDragEnd={props.handleDragEnd}
+                    handleDragEnter={props.handleDragEnter}
                     />))
                 }     
-            {/* <Card/> */}
-            <Editable  displayClass="boards_cards_add" text="Add Card"  placeholder="Enter Card Title"
+            
+            <Editable  displayClass="boards_cards_add" text="+ Add Card"  placeholder="Enter Card Title"
             onSubmit={(value)=>props.addCard(value,props.board?.id)}/>
-            {/* </div> */}
             </div>
         </div>
     )
 }
 
 export default Board
+

@@ -2,19 +2,27 @@ import React, { useState } from 'react'
 import {MoreHorizontal} from "react-feather";
 import './Card.css'
 import Dropdown from '../Dropdown/Dropdown';
+import Chip from '../Chip/Chip';
 function Card(props) {
     const [showDropdown,setShowDropdown]=useState(false);
+    
+    const { id, title} = props.card;
     return (
         <div className="card">
             <div className="card_top">
-                                                                         {/* <div className="card_top_labels"> */}
-                <div className="card_title">{props.card?.title}
-              </div> 
-                                                                          {/* </div>      */}
+                <div className="card_top_labels">
+                    {
+                        props.card?.labels?.map((item,index) => <Chip
+                        key = {index}
+                        text={item.text}
+                        color={item.color}/>)
+                    }                                                
+            <div className="card_title">{title}
+              </div>  
+                </div>                                                        
                 <div className="card_top_more" onClick={()=>setShowDropdown(true)}>
             <MoreHorizontal/>
-            {
-                showDropdown &&(
+            {   showDropdown &&(
                 <Dropdown 
                 onClose={()=>setShowDropdown(false)}>
                 <div className="card_dropdown">
@@ -24,7 +32,9 @@ function Card(props) {
                 )}
            </div>
          </div>
+        
         </div>
+
     )
 }
 

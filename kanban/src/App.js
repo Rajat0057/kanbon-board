@@ -1,38 +1,55 @@
-import React, { useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import './App.css';
 import Board from "./Components/Board/Board"
 import Editable from './Components/Editable/Editable';
 
 function App() {
-  const [boards,setBoards]=useState([
+  const [boards,setBoards]=useState(
+    [
     {
       id:Date.now()+Math.random()*3,
       title:"To Do",
       cards:[
-        // {
-        //   id:Date.now()+Math.random(),
-        //   // title:"Card 1",
-        // },
-        // {
-        //   id:Date.now()+Math.random(),
-        //   // title:"Card 2",
-        // },
+        //  {
+          // id:Date.now()+Math.random(),
+          // title:" ",
+          // tasks:[],
+          // labels:[
+          //   {
+          //     // text:"frontend",
+          //     // color:"blue"
+          //   }],
+          //   desc:"dkjsafkda",
+        //   }
+        //   ]
+        //  },
+      //   // {
+      //   //   id:Date.now()+Math.random(),
+      //   //   // title:"Card 2",
+      //   // },
+        //  }
       ],
     },
   ]);
-  const addCard=(title,bid)=>{
-    // const card={
-    //   id:Date.now()+Math.random(),
-    //   title,
-    // };
-    const index=boards.findIndex((item)=>item.id===bid);
-    if(index<0)
-    return;
 
-    const tempBoards=[...boards];
-    tempBoards[index].cards.push({id:Date.now()+Math.random(),
-      title,});
-    setBoards(tempBoards);
+  const [target,setTarget]=useState({
+    cid:"",
+    bid:"",
+  });
+  const addCard = (title,bid) => {
+     const card={
+     id:Date.now()+Math.random(),
+     title,
+     labels:[],
+     tasks:[],
+     desc:"",
+    };
+    const index = boards.findIndex((item) => item.id === bid);
+    if (index < 0) return;
+
+    const tempBoards = [...boards];
+     tempBoards[index].cards.push(card);
+         setBoards(tempBoards);
   };
 
   const removeCard=(cid,bid)=>{
@@ -52,6 +69,7 @@ function App() {
     setBoards([...boards,{
       id:Date.now()+Math.random(),
       title,
+      cards:[],
     },
   ]);
   };
@@ -59,6 +77,14 @@ function App() {
   const removeBoard=bid=>{
     const tempBoards=boards.filter(item=>item.id!==bid)
     setBoards(tempBoards);
+  }
+  
+  const handleDragEnter=()=>{
+
+  }
+
+  const handleDragEnd=()=>{
+
   }
 
   return (
