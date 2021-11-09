@@ -8,26 +8,9 @@ function App() {
     [
     {
       id:Date.now()+Math.random()*3,
-      title:"To Do",
+      title:"",
       cards:[
-        //  {
-          // id:Date.now()+Math.random(),
-          // title:" ",
-          // tasks:[],
-          // labels:[
-          //   {
-          //     // text:"frontend",
-          //     // color:"blue"
-          //   }],
-          //   desc:"dkjsafkda",
-        //   }
-        //   ]
-        //  },
-      //   // {
-      //   //   id:Date.now()+Math.random(),
-      //   //   // title:"Card 2",
-      //   // },
-        //  }
+     
       ],
     },
   ]);
@@ -109,8 +92,6 @@ function App() {
     });
 
   };
-
-
   return (
     <div className="app">
    <nav className="navbar navbar-expand-lg navbar-light bg-light">
