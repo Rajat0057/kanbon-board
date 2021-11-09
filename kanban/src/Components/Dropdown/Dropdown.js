@@ -3,7 +3,6 @@ import "./Dropdown.css"
 
 function Dropdown(props) {
     const dropdownRef=useRef();
-
     const handleClick=(event)=>{
       if(dropdownRef && !dropdownRef?.current?.contains(event?.target)&&
      props.onClose ) props.onClose();

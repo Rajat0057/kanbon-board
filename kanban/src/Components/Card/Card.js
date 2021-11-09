@@ -13,15 +13,8 @@ function Card(props) {
         onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}
         >
             <div className="card_top">
-                <div className="card_top_labels">
-                    {
-                        props.card?.labels?.map((item,index) => <Chip
-                        key = {index}
-                        text={item.text}
-                        color={item.color}/>)
-                    }                                                
-            <div className="card_title">{title}
-              </div>  
+                <div className="card_top_labels">                                               
+                  <div className="card_title">{title} </div> 
                 </div>                                                        
                 <div className="card_top_more" onClick={()=>setShowDropdown(true)}>
             <MoreHorizontal/>
@@ -33,9 +26,8 @@ function Card(props) {
                 </div>
                 </Dropdown>
                 )}
-           </div>
-         </div>
-        
+                </div>
+           </div> 
         </div>
 
     )

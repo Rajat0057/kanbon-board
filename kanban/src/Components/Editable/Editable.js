@@ -32,7 +32,5 @@ function Editable(props ) {
             )}
  </div>
     );
-
 }
-
 export default Editable;

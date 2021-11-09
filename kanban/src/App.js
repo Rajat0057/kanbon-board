@@ -2,13 +2,14 @@ import React, { useEffect,useState } from 'react'
 import './App.css';
 import Board from "./Components/Board/Board"
 import Editable from './Components/Editable/Editable';
+import {Search} from 'react-feather';
 
 function App() {
   const [boards,setBoards]=useState(
     [
     {
       id:Date.now()+Math.random()*3,
-      title:"",
+      title:"To Do",
       cards:[
      
       ],
@@ -23,9 +24,6 @@ function App() {
      const card={
      id:Date.now()+Math.random(),
      title,
-     labels:[],
-     tasks:[],
-     desc:"",
     };
     const index = boards.findIndex((item) => item.id === bid);
     if (index < 0) return;
@@ -62,7 +60,6 @@ function App() {
     setBoards(tempBoards);
   }
   
- 
   const handleDragEnd=(cid,bid)=>{
     let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
       s_bIndex = boards.findIndex((item) => item.id === bid)
@@ -94,20 +91,19 @@ function App() {
   };
   return (
     <div className="app">
-   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#"  >Kanban Board</a>
-      <form>
-  <div className="input-group">
+    <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Kanban Board</span>
+  
+  <form>
+   <div className="input-group">
     <input type="text" className="form-control" placeholder="Search" />
-    <div className="input-group-btn">
+     <div className="input-group-btn">
       <button className="btn btn-default" type="submit">
         <i className="glyphicon glyphicon-search"></i>
       </button>
     </div>
   </div>
 </form>
-  </div>
 </nav>
 <div className="app_outer">
   <div className="app_boards">

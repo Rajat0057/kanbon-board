@@ -1,29 +1,46 @@
-.app{
-  display:flex;
-  height:100vh;
+.app {
+  display: flex;
+  height: 100vh;
   width: 100%;
   flex-direction: column;
-
 }
-.navbar-brand{
+.navbar-brand {
   color: white;
-
 }
 
-.app_outer{
-  flex:1;
-  width:100%;
+.app_outer {
+  flex: 1;
+  width: 100%;
   overflow-x: auto;
-  padding :20px;
+  padding: 20px;
 }
 
-.app_boards{
+.app_boards {
   min-width: fit-content;
-  display:flex;
-  gap:30px;
-
+  display: flex;
+  gap: 30px;
 }
-.app_boards_board{
+.app_boards_board {
   min-width: 290px;
-  width:290px;
+  width: 290px;
+}
+
+.container-fluid {
+  background-color: darkgrey;
+  color: white;
+  font: bold;
+}
+
+navbar-brand mb-0 h1 {
+  color: white;
+}
+
+.form-control {
+  background-color: lightgray;
+}
+.navbar {
+  padding-left: 60px;
+  background-color: darkgrey;
+  color: white;
+  font: bolder;
 }
