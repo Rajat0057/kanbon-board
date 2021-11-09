@@ -31,16 +31,17 @@
   font: bold;
 }
 
-navbar-brand mb-0 h1 {
-  color: white;
-}
-
 .form-control {
   background-color: lightgray;
+  color: white;
 }
 .navbar {
   padding-left: 60px;
   background-color: darkgrey;
   color: white;
-  font: bolder;
+  font: bold;
+}
+.navbar-brand {
+  font-weight: bold;
+  color: white;
 }

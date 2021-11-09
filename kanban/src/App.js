@@ -24,6 +24,7 @@ function App() {
      const card={
      id:Date.now()+Math.random(),
      title,
+
     };
     const index = boards.findIndex((item) => item.id === bid);
     if (index < 0) return;
@@ -60,6 +61,7 @@ function App() {
     setBoards(tempBoards);
   }
   
+ 
   const handleDragEnd=(cid,bid)=>{
     let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
       s_bIndex = boards.findIndex((item) => item.id === bid)
@@ -90,19 +92,18 @@ function App() {
 
   };
   return (
-    <div className="app">
-    <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Kanban Board</span>
-  
-  <form>
-   <div className="input-group">
-    <input type="text" className="form-control" placeholder="Search" />
-     <div className="input-group-btn">
-      <button className="btn btn-default" type="submit">
-        <i className="glyphicon glyphicon-search"></i>
-      </button>
+      <div className="app">
+<nav class="navbar">
+  <span class="navbar-brand">Kanban Board</span>
+   <form>
+     <div className="input-group">
+       <input type="text" className="form-control" placeholder="Search" />
+         <div className="input-group-btn">
+           <button className="btn btn-default" type="submit">
+            <i className="glyphicon glyphicon-search"></i>
+          </button>
+         </div>
     </div>
-  </div>
 </form>
 </nav>
 <div className="app_outer">
@@ -115,7 +116,6 @@ function App() {
       handleDragEnd={handleDragEnd}
       handleDragEnter={handleDragEnter}
       />))
-
     }
     <div className="app_boards_board">
     <Editable displayClass="app_boards_board_add" text="Add Another list" placeholder="Add Another List"
