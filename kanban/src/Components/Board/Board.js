@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import "./Board.css"
-import {MoreHorizontal} from 'react-feather';
+import {MoreHorizontal,Trash2} from 'react-feather';
 import Editable from '../Editable/Editable';
 import Card from "../Card/Card"
 import Dropdown from '../Dropdown/Dropdown';
@@ -32,6 +32,7 @@ function Board(props) {
                     boardId={props.board.id}
                     handleDragEnd={props.handleDragEnd}
                     handleDragEnter={props.handleDragEnter}
+                    updateCard={props.updateCard}
                     />))
                 }     
             

@@ -1,0 +1,26 @@
+.cardinfo {
+  padding: 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 30px;
+}
+
+.cardinfo_box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardinfo_box_title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cardinfo_box_body {
+  width: fit-content;
+}

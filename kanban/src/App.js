@@ -24,6 +24,9 @@ function App() {
      const card={
      id:Date.now()+Math.random(),
      title,
+     labels:[],
+     tasks:[],
+     desc:"",
 
     };
     const index = boards.findIndex((item) => item.id === bid);
@@ -91,6 +94,37 @@ function App() {
     });
 
   };
+
+  // const updateCard=(cid,bid,card)=>{
+
+  //     const bIndex=boards.findIndex((item)=>item.id===bid);
+  //   if(bIndex<0)
+  //   return;
+  //   const cIndex=boards[bIndex].cards.findIndex((item)=>item.id===cid);
+  //   if(cIndex<0)return;
+    
+  //   const tempBoards=[...boards];
+  //   tempBoards[bIndex].cards[cIndex]=card;
+  //   setBoards(tempBoards);
+
+  // }
+  const updateCard = (bid, cid, card) => {
+    const index = boards.findIndex((item) => item.id === bid);
+    if (index < 0) return;
+
+    const tempBoards = [...boards];
+    const cards = tempBoards[index].cards;
+
+    const cardIndex = cards.findIndex((item) => item.id === cid);
+    if (cardIndex < 0) return;
+
+    tempBoards[index].cards[cardIndex] = card;
+
+    setBoards(tempBoards);
+  };
+
+
+
   return (
       <div className="app">
 <nav class="navbar">
@@ -115,6 +149,7 @@ function App() {
       removeCard={removeCard}
       handleDragEnd={handleDragEnd}
       handleDragEnter={handleDragEnter}
+      updateCard={updateCard}
       />))
     }
     <div className="app_boards_board">

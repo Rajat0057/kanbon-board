@@ -4,7 +4,7 @@ import './Editable.css'
 
 function Editable(props ) {
     const[showEdit,setShowEdit]=useState(false)
-    const[inputValue,setInputValue]=useState("")
+    const[inputValue,setInputValue]=useState(props.default||"")
     return (
         <div className="editable">
             {
@@ -23,7 +23,7 @@ function Editable(props ) {
             }}>
                 <input autoFocus type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  placeholder={props.placeholder}/>
                 <div className="editable_edit_footer">
-                    <button type="submit">{props.button || "Add"}</button>
+                    <button type="submit">{props.buttonText || "Add"}</button>
                     <X onClick={()=>setShowEdit(false)}/>
                 </div>
             </form>
