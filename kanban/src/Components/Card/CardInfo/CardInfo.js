@@ -14,18 +14,20 @@ const  {title,desc}=props.card;
   });
 
 
-
+///////// Useeffect hooks for pass the board id , value id and new title and set to function
    useEffect(() => {
     if (props.updateCard) props.updateCard(props.boardId, values.id, values);
   }, [values]);
   
+  //////////////////////////////////////////////// function for the updated card title 
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
   };
     return (
-        
+       
            <Modal onClose={()=>props.onClose()}>
                 <div className="cardinfo">
+                  {/*********************** Div for the edit card Title ************************/}
                     <div className="cardinfo_box">
                         <div className="cardinfo_box_title">
                             <Type/>
@@ -40,8 +42,8 @@ const  {title,desc}=props.card;
                          />
                          </div>
                     </div>
-
-                     <div className="cardinfo_box">
+               {/* *************************Div for the Description in board ****************************/}
+                      <div className="cardinfo_box">
                         <div className="cardinfo_box_title">
                             <List/>
                             description
@@ -51,8 +53,8 @@ const  {title,desc}=props.card;
                          text={"your description here"} 
                           placeholder="enyer tirle"
                          buttonText="Set Descripition"/>
-                         </div>
-                    </div>
+                         </div> */}
+                     </div> 
                   </div>
             </Modal>
        

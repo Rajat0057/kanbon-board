@@ -1,3 +1,55 @@
+# Kanban Board
+
+A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!
+
+## Requirments
+
+### Node(v14.17.6)
+
+### Npm(6.14.15)
+
+### React
+
+## Packages
+
+### React-Feather
+
+This Package used for the icons like (Trash, Edit and MoreHorizontal) etc.
+
+### React Dnd
+
+This Package used for the Drag and Drop card to one board to another board.
+
+## Descripition
+
+Worked on To-Do-List Board where creates or add the new list in the Board and drag and drop the one list from one board to another. In that we can also delete any board or card .
+and we easily edit and card form the board. The project contains searcbox where we search any card form the boards.
+
+## Components
+
+Board
+
+Cards
+
+card info
+
+Editable
+
+DropDown
+
+## Roadmap
+
+- Firstly focus on the frontend with the helps of react and jsx.
+  in that creates the board and add cards in the boards.
+
+- After that Delete the any card and any board form the boards and project respectively.
+
+- Edit any card from the Boards.
+
+- Drag and drop the cards from one to another boards.
+
+- Search the any card in search bar and chack it is paresent or not in the cards.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

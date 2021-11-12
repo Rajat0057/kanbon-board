@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { X } from "react-feather"
 import './Editable.css'
 
+// Editbale component for edit the card in board 
+
 function Editable(props ) {
     const[showEdit,setShowEdit]=useState(false)
     const[inputValue,setInputValue]=useState(props.default||"")
@@ -21,6 +23,8 @@ function Editable(props ) {
                 setShowEdit(false);
                 
             }}>
+                {/***********************  Inputtext for add any new card in board *******************/}
+                
                 <input autoFocus type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  placeholder={props.placeholder}/>
                 <div className="editable_edit_footer">
                     <button type="submit">{props.buttonText || "Add"}</button>

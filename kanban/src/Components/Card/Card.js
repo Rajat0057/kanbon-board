@@ -12,6 +12,8 @@ function Card(props) {
     const { id, title} = props.card;
 
     return (
+        /////////////////////Cardinfo component for the Edit card and boardId and card to updated text
+        
         <>
            {showModal && (
                  <CardInfo 
@@ -24,7 +26,7 @@ function Card(props) {
         <div className="card" draggable
         onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
         onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}
-        //  onClick={()=>setShowModal(true)}
+       
         >
       
             <div className="card_top">
@@ -37,12 +39,12 @@ function Card(props) {
                     }                                                
             <div className="card_title">{title}
               </div>  
-                </div>                                                        
-                <div className="card_top_more" onClick={()=>setShowDropdown(true)}>
-                     
+                </div>      
+ {/*******************DropDown for the removecard and edit card options***********************************************/}
+                <div className="card_top_more" onClick={()=>setShowDropdown(true)}>         
                      <Trash2/>
-           
-            {   showDropdown &&(
+            {   
+            showDropdown &&(
                 <Dropdown 
                 onClose={()=>setShowDropdown(false)}>
                 <div className="card_dropdown">
@@ -55,8 +57,7 @@ function Card(props) {
                     <Edit/>
                     </div>
                 
-         </div>
-        
+              </div>  
         </div>
 </>
     )
