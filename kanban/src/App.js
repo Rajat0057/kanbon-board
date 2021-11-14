@@ -2,8 +2,10 @@ import React, { useEffect,useState,useRef } from 'react'
 import './App.css';
 import Board from "./Components/Board/Board"
 import Editable from './Components/Editable/Editable';
+import Card from "./Components/Card/Card";
 import {Search} from 'react-feather';
 
+// functional component for the board and card fileds like (unique id and title)
 function App(props) {
   const [boards,setBoards]=useState(
     [
@@ -15,14 +17,32 @@ function App(props) {
       ],
     },
   ]);
+  
+ const[input,setInput]=useState("");
+  const[output,setOutput]=useState([]);
 
-  const[searchTerm,setsearchTerm]=useState("");
+  useEffect(() => {
+  //  console.log("mian");
+    // setOutput([{id:255,title:"rajat "}])
+     setOutput([])
+   boards?.props?.board?.cards.filter(val=>{
+      // if(val.title.toLowerCase()){
+         if(val.title.toLowerCase().includes(input.toLocaleLowerCase())){
+        setOutput(output=>[...output,val])
+        console.log(output);
+        alert("hello");
+        // console.log(input);
+        
+      }
+    }) 
+  }, [input])
+
   const [target,setTarget]=useState({
     cid:"",
     bid:"",
   });
 
-//function for the add card in the board
+////////////////////////////////////////////function for the add card in the board
 
   const addCard = (title,bid) => {
      const card={
@@ -41,7 +61,7 @@ function App(props) {
          setBoards(tempBoards);
   };
 
-// function for the remove card form the board
+//////////////////////////////////////////////// function for the remove card form the board
 
   const removeCard=(cid,bid)=>{
     const bIndex=boards.findIndex((item)=>item.id===bid);
@@ -56,7 +76,7 @@ function App(props) {
 
   };
 
-  // function for the Add Board in the kanban board
+  ///////////////////////////////////////////// function for the Add Board in the kanban board
 
   const addBoard=(title)=>{
     setBoards([...boards,{
@@ -67,13 +87,13 @@ function App(props) {
   ]);
   };
 
-   // function for remove board in the kanban board
+   /////////////////////////////////////////////// function for remove board in the kanban board
   const removeBoard=bid=>{
     const tempBoards=boards.filter(item=>item.id!==bid)
     setBoards(tempBoards);
   }
   
-  // function for the Drop the card form board
+  ////////////////////////////////////////////////// function for the Drop the card form board
 
   const handleDragEnd=(cid,bid)=>{
     let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
@@ -98,7 +118,7 @@ function App(props) {
 
   };
 
-  // function for the Drag the card form board
+  //////////////////////////////////// function for the Drag the card form board
    const handleDragEnter=(cid,bid)=>{
     setTarget({
     cid,
@@ -107,7 +127,7 @@ function App(props) {
 
   };
 
- // Function for Edit Card in the board
+ ////////////////////////////////////////// Function for Edit Card in the board
 
   const updateCard = (bid, cid, card) => {
     const index = boards.findIndex((item) => item.id === bid);
@@ -125,22 +145,25 @@ function App(props) {
   };
 
 
-const searchHandler=()=>{
+// const searchHandler=(searchTerm)=>{
+// console.log(searchTerm);
+// };
 
-};
-
-const getSearchTerm=()=>{
-console.log(inputE1.current.value);
-};
-const inputE1=useRef("");
+// const getSearchTerm=()=>{
+// props.searchkeyword(inputE1.current.value);
+// };
+// const inputE1=useRef("");
 
   return (
       <div className="app">
+       {/* Nevbar contains the navbar name and contains searchbox */}
 <nav class="navbar">
   <span class="navbar-brand">Kanban Board</span>
    <form>
      <div className="input-group">
-       <input type="text" className="form-control" placeholder="Search" value={props.term} ref= {inputE1} onchange={getSearchTerm()} />
+       <input type="text" className="form-control" placeholder="Search" onChange={e=>setInput(e.target.value)}/>
+
+     
           <div className="input-group-btn">
            <button className="btn btn-default" type="submit"> 
             <i className="glyphicon glyphicon-search"></i>
@@ -152,7 +175,7 @@ const inputE1=useRef("");
 <div className="app_outer">
   <div className="app_boards">
     {
-      // Mapping the card with the board id
+      //////////////////////////////////////////// Mapping the card with the board id and pass to board component
       boards.map((item)=>(<Board key={item.id} board={item}
       removeBoard={removeBoard}
       addCard={addCard}
@@ -160,8 +183,8 @@ const inputE1=useRef("");
       handleDragEnd={handleDragEnd}
       handleDragEnter={handleDragEnter}
       updateCard={updateCard}
-      term={searchTerm}
-      searchkeyword={searchHandler}
+      // term={searchTerm}
+      // searchkeyword={searchHandler}
       />))
     }
 
@@ -171,7 +194,19 @@ const inputE1=useRef("");
     </div>
   </div>
 </div>
+
+  {/* <div className="Output">
+         {console.log("printoutput ",output)}
+         {output?.map((item=><Card
+                    key={item.id}
+                    card={item}
+                    // removeCard={removeCard}
+                    // boardId={board.id}
+                     />))
+         }
+         </div> */}
 </div>
+
 
   );
 }

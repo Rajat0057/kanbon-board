@@ -53,7 +53,7 @@ const  {title,desc}=props.card;
                          text={"your description here"} 
                           placeholder="enyer tirle"
                          buttonText="Set Descripition"/>
-                         </div> */}
+                         </div> 
                      </div> 
                   </div>
             </Modal>

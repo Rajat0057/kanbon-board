@@ -36,7 +36,8 @@ function Card(props) {
                         key = {index}
                         text={item.text}
                         color={item.color}/>)
-                    }                                                
+                    }  
+                    {/* {console.log(title)}                                               */}
             <div className="card_title">{title}
               </div>  
                 </div>      
