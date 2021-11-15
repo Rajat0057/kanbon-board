@@ -10,7 +10,7 @@ function App(props) {
   const [boards,setBoards]=useState(
     [
     {
-      id:Date.now()+Math.random()*3,
+      id:Math.floor((Math.random() * 100) + 1),
       title:"To Do",
       cards:[
      
@@ -21,36 +21,23 @@ function App(props) {
  const[input,setInput]=useState("");
   const[output,setOutput]=useState([]);
 
-  useEffect(() => {
-  //  console.log("mian");
-    // setOutput([{id:255,title:"rajat "}])
-     setOutput([])
-   boards?.props?.board?.cards.filter(val=>{
-      // if(val.title.toLowerCase()){
-         if(val.title.toLowerCase().includes(input.toLocaleLowerCase())){
-        setOutput(output=>[...output,val])
-        console.log(output);
-        alert("hello");
-        // console.log(input);
-        
-      }
-    }) 
-  }, [input])
 
   const [target,setTarget]=useState({
-    cid:"",
-    bid:"",
+     cid:"",
+     bid:"",
   });
+
+ 
 
 ////////////////////////////////////////////function for the add card in the board
 
   const addCard = (title,bid) => {
      const card={
-     id:Date.now()+Math.random(),
+     id:Math.floor((Math.random() * 100) + 1),
      title,
-     labels:[],
-     tasks:[],
-     desc:"",
+    //  labels:[],
+    //  tasks:[],
+    //  desc:"",
 
     };
     const index = boards.findIndex((item) => item.id === bid);
@@ -80,7 +67,7 @@ function App(props) {
 
   const addBoard=(title)=>{
     setBoards([...boards,{
-      id:Date.now()+Math.random(),
+      id:Math.floor((Math.random() * 100) + 1),
       title,
       cards:[],
     },
@@ -93,36 +80,41 @@ function App(props) {
     setBoards(tempBoards);
   }
   
-  ////////////////////////////////////////////////// function for the Drop the card form board
+ 
 
-  const handleDragEnd=(cid,bid)=>{
+const handleDragEnd=(cid, bid)=>{
     let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
-      s_bIndex = boards.findIndex((item) => item.id === bid)
-    if (s_bIndex < 0) return;
+    
+   s_bIndex = boards.findIndex((item) => item.id === bid)
+   s_cIndex = boards[s_bIndex]?.cards?.findIndex((item) => item.id === cid )
 
-       s_cIndex = boards[s_bIndex]?.cards?.findIndex((item) => item.id === cid )
-    if (s_cIndex < 0) return;
+
+    if (s_bIndex < 0 ||  s_cIndex < 0) return;
+       console.log("source board id",bid, "source card id",cid);
 
      t_bIndex = boards.findIndex((item) => item.id === target.bid)
+     t_cIndex = boards[t_bIndex]?.cards?.findIndex((item) => item.id === target.cid )
     if (t_bIndex < 0) return;
+     console.log("target board id",target.bid);
 
-       t_cIndex = boards[t_bIndex]?.cards?.findIndex((item) => item.id === target.cid )
-         if (t_cIndex < 0) return;
-
+  
     const tempboards=[...boards]
     const tempCard=tempboards[s_bIndex].cards[s_cIndex]
 
     tempboards[s_bIndex].cards.splice(s_cIndex,1)
+
     tempboards[t_bIndex].cards.splice(t_cIndex,0,tempCard);
+
     setBoards(tempboards);
 
   };
 
-  //////////////////////////////////// function for the Drag the card form board
-   const handleDragEnter=(cid,bid)=>{
+
+
+     const handleDragEnter=(cid,bid)=>{
     setTarget({
-    cid,
-    bid,
+       cid,
+     bid,
     });
 
   };
@@ -145,14 +137,7 @@ function App(props) {
   };
 
 
-// const searchHandler=(searchTerm)=>{
-// console.log(searchTerm);
-// };
 
-// const getSearchTerm=()=>{
-// props.searchkeyword(inputE1.current.value);
-// };
-// const inputE1=useRef("");
 
   return (
       <div className="app">
@@ -162,8 +147,6 @@ function App(props) {
    <form>
      <div className="input-group">
        <input type="text" className="form-control" placeholder="Search" onChange={e=>setInput(e.target.value)}/>
-
-     
           <div className="input-group-btn">
            <button className="btn btn-default" type="submit"> 
             <i className="glyphicon glyphicon-search"></i>
@@ -176,15 +159,16 @@ function App(props) {
   <div className="app_boards">
     {
       //////////////////////////////////////////// Mapping the card with the board id and pass to board component
-      boards.map((item)=>(<Board key={item.id} board={item}
+      boards.map((item)=>(<Board 
+        key={item.id} board={item}
       removeBoard={removeBoard}
       addCard={addCard}
       removeCard={removeCard}
       handleDragEnd={handleDragEnd}
+       
       handleDragEnter={handleDragEnter}
       updateCard={updateCard}
-      // term={searchTerm}
-      // searchkeyword={searchHandler}
+      
       />))
     }
 

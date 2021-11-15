@@ -42,7 +42,7 @@ const  {title,desc}=props.card;
                          />
                          </div>
                     </div>
-               {/* *************************Div for the Description in board ****************************/}
+               {/* *************************Div for the Description in board ***************************
                       <div className="cardinfo_box">
                         <div className="cardinfo_box_title">
                             <List/>
@@ -54,7 +54,7 @@ const  {title,desc}=props.card;
                           placeholder="enyer tirle"
                          buttonText="Set Descripition"/>
                          </div> 
-                     </div> 
+                     </div>  */}
                   </div>
             </Modal>
        

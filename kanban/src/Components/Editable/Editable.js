@@ -32,7 +32,7 @@ function Editable(props ) {
                 </div>
             </form>
            ) :(
-         <p className ={'editable_display  ${props.displayClass || " "}'} onClick={()=>setShowEdit(true)}>{props.text || "Add a Card"}</p>
+         <p className ={'editable_display  ${props.displayClass || " "}'}  onClick={()=>setShowEdit(true)}>{props.text || "Add a Card"}</p>
             )}
  </div>
     );

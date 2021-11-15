@@ -11,6 +11,10 @@ function Card(props) {
     
     const { id, title} = props.card;
 
+    
+  
+
+
     return (
         /////////////////////Cardinfo component for the Edit card and boardId and card to updated text
         
@@ -26,6 +30,8 @@ function Card(props) {
         <div className="card" draggable
         onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
         onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}
+        
+        //   onDragStart = {(e) => props.onDragStart(e, title)}
        
         >
       
@@ -38,8 +44,12 @@ function Card(props) {
                         color={item.color}/>)
                     }  
                     {/* {console.log(title)}                                               */}
-            <div className="card_title">{title}
+            <div className="card_title" >{title}
               </div>  
+
+                 {/* <div className="card_title"  onDragOver={(e)=>props.onDragOver(e)} 
+                  onDrop={(e)=>props.onDrop(e,props.boardId)}>{title}
+              </div>   */}
                 </div>      
  {/*******************DropDown for the removecard and edit card options***********************************************/}
                 <div className="card_top_more" onClick={()=>setShowDropdown(true)}>         

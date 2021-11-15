@@ -11,34 +11,16 @@ function Board(props)
     const [showDropdown,setShowDropdown]=useState(false);
      const[searchTerm,setSearchTerm]=useState("");
 
-//   const inputE1=useRef("");
-//     const getSearchTerm=()=>{
 
-// };
 
-// const getSearchTerm=()=>{
-// console.log(inputE1.current.value);
-// };
-
-  const[input,setInput]=useState("");
-  const[output,setOutput]=useState([]);
-
-  // useEffect(() => {
-  //   setOutput([])
-  //  props.board?.cards.filter(val=>{
-  //     if(val.title.toLowerCase().includes(input.toLocaleLowerCase())){
-  //       setOutput(output=>[...output,val])
-  //       // console.log(output)
-  //       // alert(output)
-  //     }
-  //   })
-  //    }, [input])
 
 
 
 
     return (
-        <div className="board">
+        <div className="board" 
+        // onDragEnter={()=>handleDragEnter(props.card?.id,props.boardId)}
+         >
                  {/* <div className="input-group">
        <input type="text" className="form-control" placeholder="Search" onChange={e=>setInput(e.target.value)}/>
        </div> */}
@@ -52,8 +34,8 @@ function Board(props)
                      />))
          }
          </div> */}
-           <div className="board_top">
-            <p className="board_top_title">{props.board?.title}</p>
+           <div className="board_top"   >
+            <p className="board_top_title"    >{props.board?.title}</p>
 
             {/***************  DropDown Event for Delete any board from kanban ****************/}
             <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
@@ -70,19 +52,9 @@ function Board(props)
            </div>
             </div>
             {/************** Pass the board and card details to the card component ********************/}
-            <div className="board_cards custum-scroll">
+            <div className="board_cards custum-scroll" >
                 {
-                    // props.board?.cards?.map((item=><Card
-                    // key={item.id}
-                    // card={item}
-                    // removeCard={props.removeCard}
-                    // boardId={props.board.id}
-                    // handleDragEnd={props.handleDragEnd}
-                    // handleDragEnter={props.handleDragEnter}
-                    // updateCard={props.updateCard}
-                    // searchTerm={props.searchTerm}
-                    // term={props.searchTerm}
-                    // searchkeyword={props.searchHandler}
+             
 
                  props.board?.cards?.map((item=><Card
                 //  output.map((item=><Card
@@ -92,13 +64,18 @@ function Board(props)
                     boardId={props.board.id}
                     handleDragEnd={props.handleDragEnd}
                     handleDragEnter={props.handleDragEnter}
+                    // onDragStart={props.onDragStart}
+                    // onDragOver={props.onDragOver}
                     updateCard={props.updateCard}
+                    
+                    // onDrop={props.onDrop}
 
                     />))
                 } 
             {/*********************** Calling Add card function with other card details*************  */}
-            <Editable  displayClass="boards_cards_add" text="+ Add Card"  placeholder="Enter Card Title"
-            onSubmit={(value)=>props.addCard(value,props.board?.id)}/>
+            <div onDragEnter={()=>props.handleDragEnter(props.card?.id,props.board?.id)}>
+            <Editable displayClass="boards_cards_add" text="+ Add Card"  placeholder="Enter Card Title"
+            onSubmit={(value)=>props.addCard(value,props.board?.id)}/> </div>
             </div>
         </div>
     )
