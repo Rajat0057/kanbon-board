@@ -5,7 +5,7 @@ import Editable from './Components/Editable/Editable';
 import Card from "./Components/Card/Card";
 import {Search} from 'react-feather';
 
-// functional component for the board and card fileds like (unique id and title)
+///////functional component for the board and card fields like (unique id and title)
 function App() {
   const [boards,setBoards]=useState(
     [
@@ -18,32 +18,19 @@ function App() {
     },
   ]);
   
-// const[searchTerm,setsearchTerm]=useState("");
+
+///////////////////////////////////// Set the intial state empty for the Searchbox   
 const[input,setInput]=useState('');
-// const[output,setOutput]=useState([]);
 
 
+///////// Set the intial state empty for the card id and board id for Drag and Drop
 
-
-
-
-  const [target,setTarget]=useState({
+const [target,setTarget]=useState({
      cid:"",
      bid:"",
   });
 
 
-  // useEffect(() => {
-  //   setOutput([])
-  //   boards.board?.cards.filter(val=>{
-  //     if(val.props.title.toLowerCase().includes(input.toLowerCase()))
-  //     {
-  //       setOutput(output=>[...output,val])
-  //     }
-  //   })
-  // }, [input])
-
- 
 
 ////////////////////////////////////////////function for the add card in the board
 
@@ -51,9 +38,6 @@ const[input,setInput]=useState('');
      const card={
      id:Math.floor((Math.random() * 100) + 1),
      title,
-    //  labels:[],
-    //  tasks:[],
-    //  desc:"",
 
     };
     const index = boards.findIndex((item) => item.id === bid);
@@ -90,52 +74,40 @@ const[input,setInput]=useState('');
   ]);
   };
 
-   /////////////////////////////////////////////// function for remove board in the kanban board
+   /////////////////////////////////////////////// Function for remove board in the kanban board
+
   const removeBoard=bid=>{
     const tempBoards=boards.filter(item=>item.id!==bid)
     setBoards(tempBoards);
   }
   
- 
+ /////////////////////////////////// Function for the DragEnd (when drop any card to another card)
 
 const handleDragEnd=(cid, bid)=>{
-  console.log(input);
+  let s_bIndex,s_cIndex,t_bIndex,t_cIndex;  
+  s_bIndex = boards.findIndex((item) => item.id === bid)
+  s_cIndex = boards[s_bIndex]?.cards?.findIndex((item) => item.id === cid )
 
-  // boards.forEach(Element => {
-  //   console.log("all board",Element?.title);
+if (s_bIndex < 0 ||  s_cIndex < 0) return;
+   console.log("source board id",bid, "source card id",cid);
     
-  // });
+   t_bIndex = boards.findIndex((item) => item.id === target.bid)
+   t_cIndex = boards[t_bIndex]?.cards?.findIndex((item) => item.id === target.cid )
 
-  
-    let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
-    
-   s_bIndex = boards.findIndex((item) => item.id === bid)
-   s_cIndex = boards[s_bIndex]?.cards?.findIndex((item) => item.id === cid )
-
-
-    if (s_bIndex < 0 ||  s_cIndex < 0) return;
-       console.log("source board id",bid, "source card id",cid);
-
-     t_bIndex = boards.findIndex((item) => item.id === target.bid)
-     t_cIndex = boards[t_bIndex]?.cards?.findIndex((item) => item.id === target.cid )
     if (t_bIndex < 0) return;
      console.log("target board id",target.bid);
 
-  
     const tempboards=[...boards]
     const tempCard=tempboards[s_bIndex].cards[s_cIndex]
-
     tempboards[s_bIndex].cards.splice(s_cIndex,1)
-
     tempboards[t_bIndex].cards.splice(t_cIndex,0,tempCard);
-
     setBoards(tempboards);
 
   };
 
+/////////////////////////////////// Function for the DragEnter (when drag any card to from board)
 
-
-     const handleDragEnter=(cid,bid)=>{
+  const handleDragEnter=(cid,bid)=>{
     setTarget({
        cid,
      bid,
@@ -161,20 +133,10 @@ const handleDragEnd=(cid, bid)=>{
   };
 
 
-// useEffect(()=>{
-//   setOutput([])
-//   boards?.cards.filter(val=>
-//     {
-//       if(val.boards?.props.card.toLowerCase().includes(input.toLowerCase()))
-//       {
-//         setOutput(output=>[...output,val])
-//       }
-//     })
-// }),[input]
 
   return (
       <div className="app">
-       {/* Nevbar contains the navbar name and contains searchbox */}
+       {/************* Nevbar contains the navbar name and contains searchbox */}
 <nav class="navbar">
   <span class="navbar-brand">Kanban Board</span>
    <form>
@@ -192,33 +154,27 @@ const handleDragEnd=(cid, bid)=>{
 <div className="app_outer">
   <div className="app_boards">
     {
-      //////////////////////////////////////////// Mapping the card with the board id and pass to board component
+      ///////////////////////// Mapping the card with the board id and pass to board component
       boards.map((item)=>(<Board 
         key={item.id} board={item}
       removeBoard={removeBoard}
       addCard={addCard}
       removeCard={removeCard}
-      handleDragEnd={handleDragEnd}
-       
+      handleDragEnd={handleDragEnd}   
       handleDragEnter={handleDragEnter}
       updateCard={updateCard}
-      // searchTerm={searchTerm}
       input={input}
-      
       />))
     }
 
+{/********************** Editable component for the Add the New BOard in the project ************* */}
     <div className="app_boards_board">
     <Editable displayClass="app_boards_board_add" text="Add Another list" placeholder="Add Another List"
     onSubmit={(value)=>addBoard(value)} />
     </div>
   </div>
 </div>
-
-
 </div>
-
-
   );
 }
 

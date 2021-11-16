@@ -8,19 +8,11 @@ import CardInfo from "./CardInfo/CardInfo";
 function Card(props) {
     const [showDropdown,setShowDropdown]=useState(false);
     const [showModal,setShowModal]=useState(false);
-    
     const { id, title} = props.card;
 
-//        card.forEach(Element => {
-//     console.log("all cards",Element?.cards?.title);
-    
-//   });
-  
 
-
-    return (
-        /////////////////////Cardinfo component for the Edit card and boardId and card to updated text
-        
+return (
+        /////////////////////Cardinfo component for the Edit card and boardId and card to updated text 
         <>
            {showModal && (
                  <CardInfo 
@@ -30,14 +22,11 @@ function Card(props) {
                  onClose={()=>setShowModal(false)}
                  />
             ) }
-        <div className="card" draggable
-        onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
-        onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}
+ {/* ////////////////// Make card Draggable for the darg and adrop and borad and card into function /*/}
         
-        //   onDragStart = {(e) => props.onDragStart(e, title)}
-       
-        >
-      
+    <div className="card" draggable
+        onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
+        onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}>
             <div className="card_top">
                 <div className="card_top_labels">
                     {
@@ -46,34 +35,30 @@ function Card(props) {
                         text={item.text}
                         color={item.color}/>)
                     }  
-                    {/* {console.log(title)}                                               */}
-            <div className="card_title" >{title}
-            
-              </div>  
-
-                 {/* <div className="card_title"  onDragOver={(e)=>props.onDragOver(e)} 
-                  onDrop={(e)=>props.onDrop(e,props.boardId)}>{title}
-              </div>   */}
+                  <div className="card_title" >{title} 
+                     </div>  
                 </div>      
- {/*******************DropDown for the removecard and edit card options***********************************************/}
+ {/*******************DropDown for the removecard and edit card options*****************************/}
                 <div className="card_top_more" onClick={()=>setShowDropdown(true)}>         
                      <MoreHorizontal/>
-            {   
-            showDropdown &&(
-                <Dropdown 
-                onClose={()=>setShowDropdown(false)}>
-                <div className="card_dropdown">
-                    <p onClick={()=>props.removeCard(props.card?.id,props.boardId)}>Delete Card</p>
-                </div>
-                </Dropdown>
-                )}
+                 {   
+                   showDropdown &&(
+                    <Dropdown 
+                    onClose={()=>setShowDropdown(false)}>
+                    <div className="card_dropdown">
+                        <p onClick={()=>props.removeCard(props.card?.id,props.boardId)}>Delete Card</p>
+                    </div>
+                    </Dropdown>
+                    )}
                  </div>  
+
+    {/*******************Div for the edit card symbol **********************************************/}              
                 <div className="card_top_edit" onClick={()=>setShowModal(true)}>
                     <Edit/>
-                    </div>
+                </div>
                 
-              </div>  
-        </div>
+            </div>  
+    </div>
 </>
     )
 }

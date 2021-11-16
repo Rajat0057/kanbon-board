@@ -5,10 +5,7 @@ import { useState,useEffect } from 'react';
 import './CardInfo.css'
 import Editable from '../../Editable/Editable';
 function Cardinfo(props) {
-    // console.log(props);
 const  {title,desc}=props.card;
-
-
  const [values, setValues] = useState({
     ...props.card,
   });
@@ -27,7 +24,8 @@ const  {title,desc}=props.card;
        
            <Modal onClose={()=>props.onClose()}>
                 <div className="cardinfo">
-                  {/*********************** Div for the edit card Title ************************/}
+
+   {/******************************* Div for the edit card Title **********************/}
                     <div className="cardinfo_box">
                         <div className="cardinfo_box_title">
                             <Type/>
@@ -42,7 +40,7 @@ const  {title,desc}=props.card;
                          />
                          </div>
                     </div>
-               {/* *************************Div for the Description in board ***************************
+    {/* *************************Div for the Description in board ***************************
                       <div className="cardinfo_box">
                         <div className="cardinfo_box_title">
                             <List/>

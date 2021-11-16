@@ -10,6 +10,7 @@ function Editable(props ) {
     return (
         <div className="editable">
             {
+               /////////////////// // Pass the condition to shoe the add card text field or set paragraph
                 showEdit ?(
                 <form 
                 className={'editable_edit ${props.editClass || " "} '}

@@ -23,7 +23,7 @@ This Package used for the Drag and Drop card to one board to another board.
 ## Descripition
 
 Worked on To-Do-List Board where creates or add the new list in the Board and drag and drop the one list from one board to another. In that we can also delete any board or card .
-and we easily edit and card form the board. The project contains searcbox where we search any card form the boards.
+and we easily edit and card form the board. The project contains searchbox where we search any card form the boards.
 
 ## Components
 
@@ -48,7 +48,7 @@ DropDown
 
 - Drag and drop the cards from one to another boards.
 
-- Search the any card in search bar and chack it is paresent or not in the cards.
+- Search the any card in search bar and check it is parsent or not in the cards.
 
 # Getting Started with Create React App
 
