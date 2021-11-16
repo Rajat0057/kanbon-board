@@ -11,7 +11,10 @@ function Card(props) {
     
     const { id, title} = props.card;
 
+//        card.forEach(Element => {
+//     console.log("all cards",Element?.cards?.title);
     
+//   });
   
 
 
@@ -45,6 +48,7 @@ function Card(props) {
                     }  
                     {/* {console.log(title)}                                               */}
             <div className="card_title" >{title}
+            
               </div>  
 
                  {/* <div className="card_title"  onDragOver={(e)=>props.onDragOver(e)} 
@@ -53,7 +57,7 @@ function Card(props) {
                 </div>      
  {/*******************DropDown for the removecard and edit card options***********************************************/}
                 <div className="card_top_more" onClick={()=>setShowDropdown(true)}>         
-                     <Trash2/>
+                     <MoreHorizontal/>
             {   
             showDropdown &&(
                 <Dropdown 

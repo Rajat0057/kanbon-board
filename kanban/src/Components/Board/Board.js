@@ -8,34 +8,45 @@ function Board(props)
  {
     //  console.log(props);
     //  alert(props.term);
+    const[searchTerm,setsearchTerm]=useState("");
     const [showDropdown,setShowDropdown]=useState(false);
-     const[searchTerm,setSearchTerm]=useState("");
+    const[output,setOutput]=useState([]);
+    
+
+    //  const[searchTerm,setsearchTerm]=useState("");
+
+     
 
 
+// const title=(Ture)=>{
+//     // props.board?.cards.forEach(Element => {
+//     console.log("all cards",Element?.title);
+    
+// //    }
+// //    );
+// }
+
+useEffect(() => {
+    setOutput([])
+   props.board?.cards.filter(val=>{
+      if(val.title.toLowerCase().includes(props?.input.toLocaleLowerCase())){
+        setOutput(output=>[...output,val])
+        // console.log(output)
+        // alert(output)
+      }
+    })
+     }, [props.input])
 
 
 
 
 
     return (
-        <div className="board" 
-        // onDragEnter={()=>handleDragEnter(props.card?.id,props.boardId)}
-         >
-                 {/* <div className="input-group">
-       <input type="text" className="form-control" placeholder="Search" onChange={e=>setInput(e.target.value)}/>
-       </div> */}
-         {/* <div className="Output">
-         {output?.map((item=><Card
-                    // key={item.id}
-                    card={item}
-                    removeCard={props.removeCard}
-                    // boardId={board.id}
-                    updateCard={props.updateCard}
-                     />))
-         }
-         </div> */}
-           <div className="board_top"   >
-            <p className="board_top_title"    >{props.board?.title}</p>
+         <div className="board" >
+           <div className="board_top" >
+               {/* <h1>{props.input}</h1> */}
+            <p className="board_top_title"    >{props.board?.title} </p>
+            
 
             {/***************  DropDown Event for Delete any board from kanban ****************/}
             <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
@@ -55,22 +66,28 @@ function Board(props)
             <div className="board_cards custum-scroll" >
                 {
              
-
-                 props.board?.cards?.map((item=><Card
-                //  output.map((item=><Card
+                 props.input ?(
+                 output.map((item=><Card
                     key={item.id}
                     card={item}
                     removeCard={props.removeCard}
                     boardId={props.board.id}
                     handleDragEnd={props.handleDragEnd}
                     handleDragEnter={props.handleDragEnter}
-                    // onDragStart={props.onDragStart}
-                    // onDragOver={props.onDragOver}
                     updateCard={props.updateCard}
-                    
-                    // onDrop={props.onDrop}
 
                     />))
+                 ):(
+                      props.board?.cards.map((item=><Card
+                    key={item.id}
+                    card={item}
+                    removeCard={props.removeCard}
+                    boardId={props.board.id}
+                    handleDragEnd={props.handleDragEnd}
+                    handleDragEnter={props.handleDragEnter}
+                    updateCard={props.updateCard}
+                    />))
+                 )
                 } 
             {/*********************** Calling Add card function with other card details*************  */}
             <div onDragEnter={()=>props.handleDragEnter(props.card?.id,props.board?.id)}>
@@ -78,6 +95,7 @@ function Board(props)
             onSubmit={(value)=>props.addCard(value,props.board?.id)}/> </div>
             </div>
         </div>
+        
     )
 }
 

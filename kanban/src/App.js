@@ -6,7 +6,7 @@ import Card from "./Components/Card/Card";
 import {Search} from 'react-feather';
 
 // functional component for the board and card fileds like (unique id and title)
-function App(props) {
+function App() {
   const [boards,setBoards]=useState(
     [
     {
@@ -18,14 +18,30 @@ function App(props) {
     },
   ]);
   
- const[input,setInput]=useState("");
-  const[output,setOutput]=useState([]);
+// const[searchTerm,setsearchTerm]=useState("");
+const[input,setInput]=useState('');
+// const[output,setOutput]=useState([]);
+
+
+
+
 
 
   const [target,setTarget]=useState({
      cid:"",
      bid:"",
   });
+
+
+  // useEffect(() => {
+  //   setOutput([])
+  //   boards.board?.cards.filter(val=>{
+  //     if(val.props.title.toLowerCase().includes(input.toLowerCase()))
+  //     {
+  //       setOutput(output=>[...output,val])
+  //     }
+  //   })
+  // }, [input])
 
  
 
@@ -83,6 +99,14 @@ function App(props) {
  
 
 const handleDragEnd=(cid, bid)=>{
+  console.log(input);
+
+  // boards.forEach(Element => {
+  //   console.log("all board",Element?.title);
+    
+  // });
+
+  
     let s_bIndex,s_cIndex,t_bIndex,t_cIndex;
     
    s_bIndex = boards.findIndex((item) => item.id === bid)
@@ -137,7 +161,16 @@ const handleDragEnd=(cid, bid)=>{
   };
 
 
-
+// useEffect(()=>{
+//   setOutput([])
+//   boards?.cards.filter(val=>
+//     {
+//       if(val.boards?.props.card.toLowerCase().includes(input.toLowerCase()))
+//       {
+//         setOutput(output=>[...output,val])
+//       }
+//     })
+// }),[input]
 
   return (
       <div className="app">
@@ -146,7 +179,8 @@ const handleDragEnd=(cid, bid)=>{
   <span class="navbar-brand">Kanban Board</span>
    <form>
      <div className="input-group">
-       <input type="text" className="form-control" placeholder="Search" onChange={e=>setInput(e.target.value)}/>
+       <input type="text" className="form-control" placeholder="Search" onChange={(e)=>setInput(e.target.value)}/>
+     
           <div className="input-group-btn">
            <button className="btn btn-default" type="submit"> 
             <i className="glyphicon glyphicon-search"></i>
@@ -168,6 +202,8 @@ const handleDragEnd=(cid, bid)=>{
        
       handleDragEnter={handleDragEnter}
       updateCard={updateCard}
+      // searchTerm={searchTerm}
+      input={input}
       
       />))
     }
@@ -179,16 +215,7 @@ const handleDragEnd=(cid, bid)=>{
   </div>
 </div>
 
-  {/* <div className="Output">
-         {console.log("printoutput ",output)}
-         {output?.map((item=><Card
-                    key={item.id}
-                    card={item}
-                    // removeCard={removeCard}
-                    // boardId={board.id}
-                     />))
-         }
-         </div> */}
+
 </div>
 
 
