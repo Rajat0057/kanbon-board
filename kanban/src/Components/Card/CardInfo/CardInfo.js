@@ -1,22 +1,27 @@
 import React from 'react'
 import Modal from '../../Modal/Modal';
-import {Type, List }from "react-feather";
+import {Type}from "react-feather";
 import { useState,useEffect } from 'react';
 import './CardInfo.css'
 import Editable from '../../Editable/Editable';
-function Cardinfo(props) {
-const  {title,desc}=props.card;
- const [values, setValues] = useState({
+function Cardinfo(props) 
+{ const [values, setValues] = useState({
     ...props.card,
   });
 
+/**
+ * Useeffect hooks for pass the board id , value id and new title and set to function
+ * 
+ */
 
-///////// Useeffect hooks for pass the board id , value id and new title and set to function
    useEffect(() => {
     if (props.updateCard) props.updateCard(props.boardId, values.id, values);
   }, [values]);
-  
-  //////////////////////////////////////////////// function for the updated card title 
+ 
+ /**
+ *  function for the updated card title 
+ * 
+ */  
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
   };

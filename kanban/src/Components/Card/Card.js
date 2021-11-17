@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {MoreHorizontal,Edit,Trash2} from "react-feather";
+import {MoreHorizontal,Edit} from "react-feather";
 import './Card.css'
 import Dropdown from '../Dropdown/Dropdown';
 import Chip from '../Chip/Chip';
@@ -8,11 +8,14 @@ import CardInfo from "./CardInfo/CardInfo";
 function Card(props) {
     const [showDropdown,setShowDropdown]=useState(false);
     const [showModal,setShowModal]=useState(false);
-    const { id, title} = props.card;
+    const { title} = props.card;
 
 
 return (
-        /////////////////////Cardinfo component for the Edit card and boardId and card to updated text 
+ /**
+ * Cardinfo component for the Edit card and boardId and card to updated text 
+ * 
+ */   
         <>
            {showModal && (
                  <CardInfo 
@@ -22,7 +25,8 @@ return (
                  onClose={()=>setShowModal(false)}
                  />
             ) }
- {/* ////////////////// Make card Draggable for the darg and adrop and borad and card into function /*/}
+            
+ {/********** Make card Draggable for the darg and adrop and borad and card into function /*/}
         
     <div className="card" draggable
         onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
@@ -52,7 +56,7 @@ return (
                     )}
                  </div>  
 
-    {/*******************Div for the edit card symbol **********************************************/}              
+{/*******************Div for the edit card symbol **********************************************/}              
                 <div className="card_top_edit" onClick={()=>setShowModal(true)}>
                     <Edit/>
                 </div>

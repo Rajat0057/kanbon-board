@@ -1,19 +1,25 @@
-import React,{useState,useEffect,useRef} from 'react'
+import React,{useState,useEffect} from 'react'
 import "./Board.css"
-import {MoreHorizontal,Trash2} from 'react-feather';
+import {MoreHorizontal} from 'react-feather';
 import Editable from '../Editable/Editable';
 import Card from "../Card/Card"
 import Dropdown from '../Dropdown/Dropdown';
 function Board(props)
  {
-  
-/////////////////////////// Intial the output array to store the searchbox value
+ 
+ /**
+ * Intial the output array to store the searchbox value
+ * 
+ */   
 
 const[output,setOutput]=useState([]);
     
 const [showDropdown,setShowDropdown]=useState(false);
 
-//////////////////////////////// Hooks for Set the array with Searching card value
+/**
+ * Hooks for Set the array with Searching card value
+ * 
+ */
 useEffect(() => {
     setOutput([])
    props.board?.cards.filter(val=>{
@@ -27,8 +33,8 @@ return (
 <div className="board" >
      <div className="board_top" >
          <p className="board_top_title"    >{props.board?.title} </p>
-         
-            {/***************  DropDown Event for Delete any board from kanban ****************/}
+
+{/***  Event for Delete any board from kanban ************/}
              <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
               <MoreHorizontal/>
               {
@@ -42,10 +48,14 @@ return (
                 )}
              </div>
      </div>
-            {/************** Pass the board and card details to the card component ********************/}
+{/** Pass the board and card details to the card component ************/}
+
             <div className="board_cards custum-scroll" >
-                {
-            ///////////////////////////////////////////// Condition for display only on the search-card 
+                {            
+/**
+ * Condition for display only on the search-card 
+ * 
+ */
                  props.input ?(
                  output.map((item=><Card
                     key={item.id}
@@ -57,8 +67,11 @@ return (
                     updateCard={props.updateCard}
                     />))
                  ):(
-                 
-             /////////////////////////////////////////////  Condition for display all card in boards
+ 
+/**
+ * Condition for display all card in boards
+ * 
+ */               
                       props.board?.cards.map((item=><Card
                     key={item.id}
                     card={item}
@@ -70,14 +83,15 @@ return (
                     />))
                  )
                 } 
-            {/*********************** Calling Add card function with other card details*************  */}
+{/***** Calling Add card function with other card details******* */}
+
             <div onDragEnter={()=>props.handleDragEnter(props.card?.id,props.board?.id)}>
                 <Editable displayClass="boards_cards_add" text="+ Add Card"  placeholder="Enter Card Title"
                 onSubmit={(value)=>props.addCard(value,props.board?.id)}/>
              </div>
       </div>
 </div>
-        
+     
     )
 }
 
