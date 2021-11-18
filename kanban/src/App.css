@@ -4,37 +4,30 @@
   width: 100%;
   flex-direction: column;
 }
-.navbar-brand {
+.navbarbrand {
   color: white;
 }
 
-.app_outer {
+.appOuter {
   flex: 1;
   width: 100%;
   overflow-x: auto;
   padding: 20px;
 }
 
-.app_boards {
+.appBoards {
   min-width: fit-content;
   display: flex;
   gap: 30px;
 }
-.app_boards_board {
+.appBoardsBoard {
   min-width: 290px;
   width: 290px;
 }
 
-.container-fluid {
-  background-color: darkgrey;
-  color: white;
-  font: bold;
-}
-
-.form-control {
+.formControl {
   background-color: lightgray;
   color: white;
-  
 }
 .navbar {
   padding-left: 60px;
@@ -42,7 +35,7 @@
   color: white;
   font: bold;
 }
-.navbar-brand {
+.navbarBrand {
   font-weight: bold;
   color: white;
 }

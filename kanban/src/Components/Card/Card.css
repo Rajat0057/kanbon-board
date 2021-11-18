@@ -6,43 +6,35 @@
   flex-direction: column;
   gap: 10px;
 }
-.card_top {
+.cardTop {
   display: flex;
   gap: 5px;
 }
-.card_title {
+.cardTitle {
   font-weight: normal;
-  /* text-align: left; */
-  /* flex: 1;
-  display: flex;
-  gap: 10px; */
 }
-.card_top_labels {
+.cardTopLabels {
   flex: 1;
   display: flex;
   gap: 10px;
 }
-.card_top svg {
+.cardTop svg {
   opacity: 0;
   transition: 200ms;
 }
-.card:hover .card_top svg {
+.card:hover .cardTop svg {
   opacity: 1;
 }
-/* .title_content{
-    align-content: flex-start;
-} */
-
-.card_top_more {
+.cardTopMore {
   position: relative;
 }
-.card_dropdown {
+.cardDropDown {
   background-color: #fff;
   width: 130px;
   padding: 10px;
   border-radius: 3px;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.5);
 }
-.card_dropdown p {
+.cardDropDown p {
   cursor: pointer;
 }

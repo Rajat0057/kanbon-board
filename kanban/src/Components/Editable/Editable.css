@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.editable_display {
+.editableDisplay {
   background-color: #f8f8f8;
   border-radius: 3px;
   padding: 10px;
@@ -10,17 +10,17 @@
   cursor: default;
 }
 
-.editable_display:hover {
+.editableDisplay:hover {
   background-color: #ccc;
 }
 
-.editable_edit {
+.editableEdit {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.editable_edit input {
+.editableEdit input {
   border-radius: 3px;
   outline: none;
   border: 1px solid #1379ec;
@@ -28,12 +28,12 @@
   font-size: 1rem;
 }
 
-.editable_edit_footer {
+.editableEditFooter {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.editable_edit_footer button {
+.editableEditFooter button {
   outline: none;
   border: none;
   color: #fff;
@@ -43,10 +43,10 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.editable_edit_footer button:hover {
+.editableEditFooter button:hover {
   background-color: #0765d1;
 }
 
-.editable_edit_footer svg {
+.editableEditFooter svg {
   cursor: pointer;
 }

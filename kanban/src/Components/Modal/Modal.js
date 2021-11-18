@@ -6,7 +6,7 @@ function Modal(props) {
         <div className="modal"
         onClick={()=>props.onClose?props.onClose():""}
         >
-            <div className="modal_content" 
+            <div className="modalContent" 
              onClick={(event)=>event.stopPropagation()}
             >
                 {props.children}

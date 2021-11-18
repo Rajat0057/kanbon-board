@@ -28,33 +28,33 @@ function Cardinfo(props)
     return (
        
            <Modal onClose={()=>props.onClose()}>
-                <div className="cardinfo">
+                <div className="cardInfo">
 
    {/******************************* Div for the edit card Title **********************/}
-                    <div className="cardinfo_box">
-                        <div className="cardinfo_box_title">
+                    <div className="cardInfoBox">
+                        <div className="cardInfoBoxTitle">
                             <Type/>
                             Title
                          </div>
-                         <div className="cardinfo_box_body">
+                         <div className="cardInfoBoxBody">
                          <Editable text={values.title} 
                          default={values.title}
-                         placeholder="enyer tirle"
+                         placeholder="enter title"
                          buttonText="Set Title"
                          onSubmit={updateTitle}
                          />
                          </div>
                     </div>
     {/* *************************Div for the Description in board ***************************
-                      <div className="cardinfo_box">
-                        <div className="cardinfo_box_title">
+                      <div className="cardInfoBox">
+                        <div className="cardInfoBoxTitle">
                             <List/>
                             description
                          </div>
-                         <div className="cardinfo_box_body">
+                         <div className="cardinfoBoxBody">
                          <Editable 
                          text={"your description here"} 
-                          placeholder="enyer tirle"
+                          placeholder="enter Descripition"
                          buttonText="Set Descripition"/>
                          </div> 
                      </div>  */}

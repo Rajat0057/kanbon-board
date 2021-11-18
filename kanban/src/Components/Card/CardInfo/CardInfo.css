@@ -1,4 +1,4 @@
-.cardinfo {
+.cardInfo {
   padding: 30px;
   background-color: #fff;
   display: flex;
@@ -7,13 +7,13 @@
   gap: 30px;
 }
 
-.cardinfo_box {
+.cardInfoBox {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.cardinfo_box_title {
+.cardInfoBoxTitle {
   font-weight: bold;
   font-size: 1.3rem;
   display: flex;
@@ -21,6 +21,6 @@
   align-items: center;
 }
 
-.cardinfo_box_body {
+.cardInfoBoxBody {
   width: fit-content;
 }

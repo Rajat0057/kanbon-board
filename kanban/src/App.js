@@ -152,9 +152,8 @@ if (s_bIndex < 0 ||  s_cIndex < 0) return;
   return (
       <div className="app">
        {/************* Nevbar contains the navbar name and contains searchbox */}
-<nav class="navbar">
-  <span class="navbar-brand">Kanban Board</span>
-  {/* <h1>Kanban Board</h1> */}
+<nav className="navbar">
+  <h4 className="navbarBrand">Kanban Board</h4>
    <form>
      <div className="input-group">
        <input type="text" className="form-control" placeholder="Search" onChange={(e)=>setInput(e.target.value)} value={input}  />
@@ -167,8 +166,8 @@ if (s_bIndex < 0 ||  s_cIndex < 0) return;
     </div>
 </form>
 </nav>
-<div className="app_outer">
-  <div className="app_boards">
+<div className="appOuter">
+  <div className="appBoards">
     {
            /**
  *  Mapping the card with the board id and pass to board component
@@ -187,8 +186,8 @@ if (s_bIndex < 0 ||  s_cIndex < 0) return;
     }
 
 {/********************** Editable component for the Add the New BOard in the project ************* */}
-    <div className="app_boards_board">
-    <Editable displayClass="app_boards_board_add" text="Add Another list" placeholder="Add Another List"
+    <div className="appBoardsBoard">
+    <Editable displayClass="appBoardsBoardAdd" text="Add Another list" placeholder="Add Another List"
     onSubmit={(value)=>addBoard(value)} />
     </div>
   </div>

@@ -8,7 +8,7 @@ import CardInfo from "./CardInfo/CardInfo";
 function Card(props) {
     const [showDropdown,setShowDropdown]=useState(false);
     const [showModal,setShowModal]=useState(false);
-    const { title} = props.card;
+    const {title} = props.card;
 
 
 return (
@@ -31,25 +31,25 @@ return (
     <div className="card" draggable
         onDragEnd={()=>props.handleDragEnd(props.card?.id,props.boardId)}
         onDragEnter={()=>props.handleDragEnter(props.card?.id,props.boardId)}>
-            <div className="card_top">
-                <div className="card_top_labels">
+            <div className="cardTop">
+                <div className="cardTopLabels">
                     {
                         props.card?.labels?.map((item,index) => <Chip
                         key = {index}
                         text={item.text}
                         color={item.color}/>)
                     }  
-                  <div className="card_title" >{title} 
+                  <div className="cardTitle" >{title} 
                      </div>  
                 </div>      
  {/*******************DropDown for the removecard and edit card options*****************************/}
-                <div className="card_top_more" onClick={()=>setShowDropdown(true)}>         
+                <div className="cardTopMore" onClick={()=>setShowDropdown(true)}>         
                      <MoreHorizontal/>
                  {   
                    showDropdown &&(
                     <Dropdown 
                     onClose={()=>setShowDropdown(false)}>
-                    <div className="card_dropdown">
+                    <div className="cardDropDown">
                         <p onClick={()=>props.removeCard(props.card?.id,props.boardId)}>Delete Card</p>
                     </div>
                     </Dropdown>
@@ -57,7 +57,7 @@ return (
                  </div>  
 
 {/*******************Div for the edit card symbol **********************************************/}              
-                <div className="card_top_edit" onClick={()=>setShowModal(true)}>
+                <div className="cardTopEdit" onClick={()=>setShowModal(true)}>
                     <Edit/>
                 </div>
                 

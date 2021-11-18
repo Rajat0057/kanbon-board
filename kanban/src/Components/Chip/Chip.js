@@ -4,10 +4,8 @@ import "./Chip.css"
 
 function Chip(props) {
     return (
-        <div className="chip" style={{ backgroundColor:props.color }}>
-            
+        <div className="chip" > 
             {props.text}
-            
                 {props.close && <X onClick={props.onClose ?props.onClose():""}/>}
             
             

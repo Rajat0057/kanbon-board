@@ -20,28 +20,32 @@ const [showDropdown,setShowDropdown]=useState(false);
  * Hooks for Set the array with Searching card value
  * 
  */
+
 useEffect(() => {
-    setOutput([])
-   props.board?.cards.filter(val=>{
+   setOutput([])
+  return props.board?.cards.filter(val=>{
       if(val.title.toLowerCase().includes(props?.input.toLowerCase())){
         setOutput(output=>[...output,val])
-      }
+        
+      }return output;
     })
      }, [props.input])
+  
+     
 
 return (
 <div className="board" >
-     <div className="board_top" >
-         <p className="board_top_title" >{props.board?.title} </p>
+     <div className="boardTop" >
+         <p className="boardTopTitle" >{props.board?.title} </p>
 
 {/***  Event for Delete any board from kanban ************/}
-             <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
+             <div className="boardTopMore" onClick={()=>setShowDropdown(true)}>
               <MoreHorizontal/>
               {
                 showDropdown &&(
                 <Dropdown 
                 onClose={()=>setShowDropdown(false)}>
-                   <div className="board_dropdown">
+                   <div className="boardDropdown">
                     <p onClick={()=>props.removeBoard(props.board?.id)}>Delete Board</p>
                    </div>
                 </Dropdown>
@@ -50,7 +54,7 @@ return (
      </div>
 {/** Pass the board and card details to the card component ************/}
 
-            <div className="board_cards custum-scroll" >
+            <div className="boardCards">
                 {            
 /**
  * Condition for display only on the search-card 
@@ -86,7 +90,7 @@ return (
 {/***** Calling Add card function with other card details******* */}
 
             <div onDragEnter={()=>props.handleDragEnter(props.card?.id,props.board?.id)}>
-                <Editable displayClass="boards_cards_add" text="+ Add Card"  placeholder="Enter Card Title"
+                <Editable displayClass="boardsCardsAdd" text="+ Add Card"  placeholder="Enter Card Title"
                 onSubmit={(value)=>props.addCard(value,props.board?.id)}/>
              </div>
       </div>

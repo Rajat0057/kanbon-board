@@ -1,6 +1,5 @@
 import React, {useEffect,useRef} from "react";
 import "./Dropdown.css"
-
  
 /**
  * Dropdaown for delete card and board 
@@ -21,7 +20,7 @@ function Dropdown(props) {
         };
     });
     return (
-        <div ref={dropdownRef} className={'dropdown custum-scroll ${props.class?props.class: " "}'}>
+        <div ref={dropdownRef} className={`dropdown custum-scroll ${props.class?props.class: " "}`}>
             {props.children}
         </div>
     );
