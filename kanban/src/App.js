@@ -3,7 +3,6 @@ import './App.css';
 import Board from "./Components/Board/Board"
 import Editable from './Components/Editable/Editable';
 
-
  /**
  * functional component for the board and card fields like (unique id and title)
  * 
@@ -35,7 +34,6 @@ const [target,setTarget]=useState({
      cid:"",
      bid:"",
   });
-
 
  /**
  *  function for the add card in the board 
@@ -151,17 +149,15 @@ if (s_bIndex < 0 ||  s_cIndex < 0) return;
 
     setBoards(tempBoards);
   };
-
-
-
   return (
       <div className="app">
        {/************* Nevbar contains the navbar name and contains searchbox */}
 <nav class="navbar">
   <span class="navbar-brand">Kanban Board</span>
+  {/* <h1>Kanban Board</h1> */}
    <form>
      <div className="input-group">
-       <input type="text" className="form-control" placeholder="Search" onChange={(e)=>setInput(e.target.value)}/>
+       <input type="text" className="form-control" placeholder="Search" onChange={(e)=>setInput(e.target.value)} value={input}  />
      
           <div className="input-group-btn">
            <button className="btn btn-default" type="submit"> 
@@ -200,5 +196,4 @@ if (s_bIndex < 0 ||  s_cIndex < 0) return;
 </div>
   );
 }
-
 export default App;

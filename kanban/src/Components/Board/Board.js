@@ -32,7 +32,7 @@ useEffect(() => {
 return (
 <div className="board" >
      <div className="board_top" >
-         <p className="board_top_title"    >{props.board?.title} </p>
+         <p className="board_top_title" >{props.board?.title} </p>
 
 {/***  Event for Delete any board from kanban ************/}
              <div className="board_top_more" onClick={()=>setShowDropdown(true)}>

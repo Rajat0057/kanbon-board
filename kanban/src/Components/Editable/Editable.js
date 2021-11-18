@@ -18,6 +18,7 @@ function Editable(props ) {
  * Pass the condition to shoe the add card text field or set paragraph
  * 
  */                 
+
                 showEdit ?(
                 <form 
                 className={`editable_edit ${props.editClass || " "} `}
@@ -31,7 +32,7 @@ function Editable(props ) {
                 setShowEdit(false);
                 
             }}>
-{/***********  Inputtext for add any new card in board *******************/}
+{/***********************  Inputtext for add any new card in board *******************/}
                 
                 <input autoFocus type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}  placeholder={props.placeholder}/>
                 <div className="editable_edit_footer">
@@ -40,7 +41,7 @@ function Editable(props ) {
                 </div>
             </form>
            ) :(
-         <p className ={'editable_display  ${props.displayClass || " "}'}  onClick={()=>setShowEdit(true)}>{props.text || "Add a Card"}</p>
+         <p className ={ `editable_display  ${props.displayClass || " "}`}  onClick={()=>setShowEdit(true)}>{props.text || "Add a Card"}</p>
             )}
  </div>
     );
